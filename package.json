@@ -6,6 +6,17 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test/*/spec.js --timeout 15000"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zavalit/StaticHtmlWebpackPlugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "static",
+    "html",
+    "isomorphic"
+  ],
   "author": "Seva Dolgopolov",
   "license": "MIT",
   "dependencies": {
