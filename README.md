@@ -29,4 +29,21 @@ module.exports = {
 }
 
 ```
-You may be noticed that *entry* applies an object with a key/value pair ```server: __dirname + '/index.js'``` that is where all static generation relevant staff have to be handled. You are free to extend with ```... client: __dirname + '/yourclient.js'``` in order to have a library that relies on client's objects like *window.document* that you don't have, when you generate your static html.
+You may have noticed, that **entry** applies an object with a key/value pair ```server: __dirname + '/index.js'``` that is where all static generation relevant staff have to be handled. You are free to extend it with ```... client: __dirname + '/yourclient.js'``` in order to have a library that relies on client's objects like *window.document* that you don't have, when you generate your static html, **StaticHtmlWebpackPlugin** just doesn't care, all it looks for is a *server* key.
+
+To provide your actual html you have to point to it:
+```
+// index.js
+
+module.exports = "
+<html>
+  <head>
+    <title>Static Html</title>
+  </head>
+  <body>
+    <h1>Hi, i'm so static</h1>
+  </body>
+</html>
+"
+
+```
