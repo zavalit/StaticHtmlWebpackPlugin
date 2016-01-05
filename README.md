@@ -21,7 +21,7 @@ module.exports = {
     server: __dirname + '/index.js'
   },
   output: {
-    path: __dirname + '/plugin',
+    path: __dirname + '/public',
     filename: '[name].js',
     libraryTarget: 'umd'
   },
