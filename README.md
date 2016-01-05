@@ -47,3 +47,114 @@ module.exports = "
 "
 
 ```
+
+#### Html based on React routes.
+
+You can also generate a multiple pages at once by providing routes of react-router, for that case you have to provide an object in stead of plain html. The object have to look like this:
+
+```
+// index.js
+
+import React from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {RoutingContext, match} from 'react-router';
+import routes from './routes.js';
+
+
+module.exports = {
+
+  'react-router' : {
+
+    getPaths: function(parser){
+      return parser(routes)
+    },
+
+    buildHtml: function(path, callback){
+       match({ routes, location: path }, (error, redirectLocation, renderProps) => {
+         callback(renderToStaticMarkup(<RoutingContext {...renderProps} />))
+       })
+    }
+  }
+
+}
+
+```
+and for a sample routes like this:
+```
+// routes.js
+import React from 'react'
+import { Route, Link } from 'react-router'
+
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        <h1>App</h1>
+        <ul>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        {this.props.children}
+      </div>
+    )
+  }
+})
+
+const About = React.createClass({
+  render() {
+    let { content } = this.props
+    return <h3>About</h3>
+  }
+})
+
+
+module.exports = (
+    <Route path="/" component={App}>
+      <Route path="about" component={About} />
+    </Route>
+)
+
+```
+
+you will get 2 html files generated:
+```
+public/index.html
+public/about/index.html
+```
+
+
+#### Extend it.
+
+You can use also write your own generators, just create another addon in ```node_modules/static-html-webapck-plugin/addons``` that has the following sceleton:
+
+```
+//youraddon.js
+module.exports = {
+  getPaths: function(routes){
+      let paths = [...];
+      ...
+      return paths;
+  }
+}
+```
+
+and reference to it in your entry file:
+```
+//index.js
+module.exports = {
+
+  'youraddon' : {
+
+    getPaths: function(parser){
+      return parser(routes)
+    },
+
+    buildHtml: function(path, callback){
+
+         // your logic to generate an html for a given path and provide it as an argument to a callback function
+
+    }
+  }
+
+}
+
+```

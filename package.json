@@ -1,6 +1,6 @@
 {
   "name": "static-html-webpack-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generates static html files",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,9 @@
     "plugin",
     "static",
     "html",
-    "isomorphic"
+    "isomorphic",
+    "react", 
+    "react-router"
   ],
   "author": "Seva Dolgopolov",
   "license": "MIT",
