@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/zavalit/StaticHtmlWebpackPlugin.svg)](http://travis-ci.org/zavalit/StaticHtmlWebpackPlugin)
 # Static Html Webpack plugin
 
 It's a webpack plugin that aims to make static html generation as simple and transparent as possible.
