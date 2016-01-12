@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
-import App from './App.jsx'
-import About from './About.jsx'
+import App from './App.jsx';
+import About from './About.jsx';
 
 
 const routes = (<Route path="/" component={App}>

@@ -1,8 +1,9 @@
+'use strict';
 
-var path = require('path');
-var evaluate = require('eval');
+const path = require('path');
+const evaluate = require('eval');
 
-var StaticHtml = function(options){
+const StaticHtml = function(options){
 
   options = options || {};
 
@@ -31,7 +32,8 @@ StaticHtml.prototype.apply = function(compiler){
 StaticHtml.prototype.emit = function(compilation, done){
 
   try{
-    var render = this.execute(compilation);
+
+    let render = this.execute(compilation);
     this.buildHtml(compilation, render)
 
   } catch (err){
@@ -82,12 +84,12 @@ StaticHtml.prototype.execute = function(compilation)
    if(compilation.options.output.libraryTarget !== 'umd'){
      throw new Error('Your webpack config have to have an output libraryTarget equal to umd');
    }
-   var serverJs = this.outputFilename;
+   let serverJs = this.outputFilename;
 
    if(typeof(compilation.assets[serverJs]) === "undefined"){
      throw new Error('Webpack\'s entry definition is not valid, check whether it has ' + serverJs.substring(0, serverJs.length - 3) + ' key for your entry file');
    }
-   var source = compilation.assets[serverJs].source();
+   let source = compilation.assets[serverJs].source();
    return  evaluate(source, serverJs, undefined, true);
 }
 
@@ -98,7 +100,7 @@ StaticHtml.prototype.getOutputPaths = function(compilation)
 
 StaticHtml.prototype.getPublicPath = function(compilation){
 
-  var publicPath = typeof compilation.options.output.publicPath !== 'undefined' ?
+  let publicPath = typeof compilation.options.output.publicPath !== 'undefined' ?
      compilation.options.output.publicPath : ".";
 
   return publicPath;

@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/zavalit/StaticHtmlWebpackPlugin.svg)](http://travis-ci.org/zavalit/StaticHtmlWebpackPlugin)
 # Static Html Webpack plugin
 
 It's a webpack plugin that aims to make static html generation as simple and transparent as possible.
@@ -101,7 +102,6 @@ const App = React.createClass({
 
 const About = React.createClass({
   render() {
-    let { content } = this.props
     return <h3>About</h3>
   }
 })
@@ -113,6 +113,19 @@ module.exports = (
     </Route>
 )
 
+```
+
+It'a also possible to define Routes as an Array, if you don't want to use JSX.
+
+```
+module.exports = [
+  { path: '/',
+    component: App,
+    childRoutes: [
+      { path: 'about', component: About }
+    ]
+  }
+]
 ```
 
 you will get 2 html files generated:
