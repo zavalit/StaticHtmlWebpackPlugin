@@ -30,7 +30,22 @@ module.exports = {
 }
 
 ```
-You may have noticed, that **entry** applies an object with a key/value pair ```server: __dirname + '/index.js'``` that is where all static generation relevant staff have to be handled. You are free to extend it with ```... client: __dirname + '/yourclient.js'``` in order to have a library that relies on client's objects like *window.document* that you don't have, when you generate your static html, **StaticHtmlWebpackPlugin** just doesn't care, all it looks for is a *server* key.
+Plugin takes following options:
+
+```
+- htmlFilename: name of html file, that have to be generated (default is "index.html"),
+- prependDoctypeHtml: set "<!DOCTYPE html>" before your html (default is true),
+- appendHash: append hash to css and script files (default is true)
+
+```
+To manipulate Plugin Options just provide it to Plugin instance like that:
+```
+ plugins: [new StaticHtml({appendHash: false})]
+
+```
+
+
+You may have noticed, that **entry** applies an object with a key/value pair ```server: __dirname + '/index.js'``` that is where all static generation relevant staff have to be handled. You are free to extend it with ```... client: __dirname + '/yourclient.js'``` in order to have a library that relies on client's objects like *window.document* that you don't have, when you generate your static html. **StaticHtmlWebpackPlugin** just doesn't care about anything that, is not relevant for server-side html generation, all it looks for is a **entry.server** key.
 
 To provide your actual html you have to point to it:
 ```

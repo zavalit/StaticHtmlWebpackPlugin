@@ -10,5 +10,5 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd'
   },
-  plugins: [new StaticHtml()]
+  plugins: [new StaticHtml({prependDoctypeHtml:false})]
 }

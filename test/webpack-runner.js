@@ -17,7 +17,7 @@ module.exports = function(config, check, done){
      if(jsonStats.warnings.length > 0)
          done(jsonStats.warnings);
 
-     check(fs)
+     check(fs, jsonStats.hash)
      done();
 
   })

@@ -16,7 +16,7 @@ module.exports = [
       {test: /\.jsx?$/, loader: 'babel'}
     ]
   },
-  plugins: [new StaticHtml()]
+  plugins: [new StaticHtml({prependDoctypeHtml:false})]
 },
 // check array
 {  entry: {
@@ -32,6 +32,6 @@ module.exports = [
       {test: /\.jsx?$/, loader: 'babel'}
     ]
   },
-  plugins: [new StaticHtml()]
+  plugins: [new StaticHtml({prependDoctypeHtml:false, appendHash:false})]
 }
 ]
