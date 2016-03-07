@@ -15,7 +15,7 @@ is equal to **umd** API. It should be enough to enable plugin to do his work.
 ```
 // webpack.config.js
 
-var StaticHtml = require("static-html-webapck-plugin");
+var StaticHtml = require("static-html-webpack-plugin");
 
 module.exports = {
   entry: {
