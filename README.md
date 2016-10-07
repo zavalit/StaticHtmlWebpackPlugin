@@ -152,7 +152,7 @@ public/about/index.html
 
 #### Extend it.
 
-You can use also write your own generators, just create another addon in ```node_modules/static-html-webapck-plugin/addons``` that has the following sceleton:
+You can use also write your own generators, just create another addon in ```node_modules/static-html-webpack-plugin/addons``` that has the following sceleton:
 
 ```
 //youraddon.js
